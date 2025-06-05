@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Interview Helper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .response {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .response h3 {
+            color: #4CAF50;
+            font-size: 1.5em;
+        }
+
+        .cuisine-list {
+            margin-top: 15px;
+        }
+
+        .cuisine-list li {
+            margin-bottom: 10px;
+        }
+
+        .cuisine-title {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Tips for interview</h2>
+    <form action="#" th:action="@{/interviewHelper}" th:method="post">
+        <div class="form-group">
+            <label for="company">Enter company name:</label>
+            <input type="text" id="company" name="company" placeholder="E.g., Amazon, Meta" required>
+        </div>
+        <div class="form-group">
+            <label for="jobTitle">Enter job title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" min="1" placeholder="E.g., Software Engineer, Devops"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="strength">Enter your strength:</label>
+            <input type="text" id="strength" name="strength"
+                   placeholder="E.g., Problem-solving ability, Attention to detail" required>
+        </div>
+        <div class="form-group">
+            <label for="weakness">Enter your weakness:</label>
+            <input type="text" id="weakness" name="weakness" placeholder="E.g., Overengineering solutions" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="response" th:if="${interviewTips}">
+        <h3><span th:text="${interviewTips.company + ' - '  + interviewTips.position}"></span>:</h3>
+        <ul class="cuisine-list">
+            <li th:each="tip, index : ${interviewTips.tips}">
+                <span th:text="${tip}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

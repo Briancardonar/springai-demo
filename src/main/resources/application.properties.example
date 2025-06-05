@@ -1,0 +1,9 @@
+spring.application.name=springai-demo
+
+spring.ai.openai.api-key=
+spring.ai.openai.chat.options.max-tokens=500
+spring.ai.openai.chat.options.temperature=0.7
+spring.ai.openai.chat.options.model=gpt-4o
+
+spring.ai.vectorstore.chroma.initialize-schema=true
+spring.ai.vectorstore.chroma.collection-name=demo
